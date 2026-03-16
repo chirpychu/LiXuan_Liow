@@ -29,12 +29,83 @@
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 2px; }
 
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 64px; background: rgba(6,6,6,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
-  .nav-logo { font-family: var(--display); font-size: 13px; font-weight: 700; letter-spacing: 2px; color: var(--orange); text-decoration: none; }
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    background: rgba(6,6,6,0.88); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--display); font-size: 13px; font-weight: 700;
+    letter-spacing: 2px; color: var(--orange); text-decoration: none;
+    flex-shrink: 0;
+  }
   .nav-links { display: flex; gap: 28px; list-style: none; }
-  .nav-links a { font-family: var(--mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--text-dim); text-decoration: none;
+    transition: color 0.2s;
+  }
   .nav-links a:hover { color: var(--orange); }
 
+  /* ── HAMBURGER BUTTON ── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 40px; height: 40px;
+    background: none; border: none; cursor: pointer;
+    padding: 4px; flex-shrink: 0;
+  }
+  .nav-hamburger span {
+    display: block; width: 22px; height: 1.5px;
+    background: var(--orange); border-radius: 1px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+  /* Animated X state */
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ── MOBILE DRAWER ── */
+  .mobile-menu {
+    display: none;
+    position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
+    background: rgba(6,6,6,0.97); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-glow);
+    flex-direction: column;
+    padding: 0;
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+  }
+  .mobile-menu.open {
+    max-height: 500px;
+    padding: 16px 0 24px;
+  }
+  .mobile-menu a {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--text-dim);
+    text-decoration: none; padding: 14px 32px;
+    border-bottom: 1px solid var(--border);
+    display: block;
+    transition: color 0.2s, background 0.2s;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover, .mobile-menu a.active {
+    color: var(--orange);
+    background: var(--orange-dim);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .mobile-menu { display: flex; }
+  }
+
+  /* ── HERO ── */
   #hero { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
   #canvas-bg { position: absolute; inset: 0; z-index: 0; }
   .hero-content { position: relative; z-index: 2; text-align: center; padding: 0 24px; }
@@ -160,7 +231,6 @@
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 768px) {
-    nav { padding: 0 20px; } .nav-links { gap: 14px; }
     .container { padding: 0 20px; }
     .about-grid, .edu-grid { grid-template-columns: 1fr; gap: 32px; }
     .platforms-grid { grid-template-columns: 1fr; }
@@ -172,6 +242,8 @@
 
 <nav>
   <a href="#hero" class="nav-logo">MY PORTFOLIO</a>
+
+  <!-- Desktop links -->
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -181,7 +253,25 @@
     <li><a href="#certs">Certs</a></li>
     <li><a href="#platforms">Coding</a></li>
   </ul>
+
+  <!-- Mobile hamburger button -->
+  <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
+
+<!-- Mobile slide-down menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about"      class="mobile-nav-link">About</a>
+  <a href="#skills"     class="mobile-nav-link">Skills</a>
+  <a href="#projects"   class="mobile-nav-link">Projects</a>
+  <a href="#experience" class="mobile-nav-link">Experience</a>
+  <a href="#education"  class="mobile-nav-link">Education</a>
+  <a href="#certs"      class="mobile-nav-link">Certs</a>
+  <a href="#platforms"  class="mobile-nav-link">Coding</a>
+</div>
 
 <section id="hero">
   <canvas id="canvas-bg"></canvas>
@@ -485,6 +575,7 @@
 </footer>
 
 <script>
+// ── Canvas background ──
 const canvas = document.getElementById('canvas-bg');
 const ctx = canvas.getContext('2d');
 let W, H, nodes = [];
@@ -502,15 +593,50 @@ function drawFrame() {
 resize(); createNodes(80); drawFrame();
 window.addEventListener('resize',()=>{resize();createNodes(80);});
 
+// ── Hamburger menu ──
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', isOpen);
+});
+
+// Close menu when a link is tapped
+document.querySelectorAll('.mobile-nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  });
+});
+
+// Close menu on outside tap
+document.addEventListener('click', (e) => {
+  if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+});
+
+// ── Scroll reveal ──
 const observer = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.12});
 document.querySelectorAll('.fade-in,.timeline-item').forEach(el=>observer.observe(el));
 
+// ── Active nav highlight ──
 const sections=document.querySelectorAll('section[id]');
 const navLinks=document.querySelectorAll('.nav-links a');
+const mobileLinks=document.querySelectorAll('.mobile-nav-link');
 window.addEventListener('scroll',()=>{
   let current='';
   sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)current=s.getAttribute('id');});
   navLinks.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+current?'var(--orange)':'';});
+  mobileLinks.forEach(a=>{
+    if(a.getAttribute('href')==='#'+current) a.classList.add('active');
+    else a.classList.remove('active');
+  });
 });
 </script>
 </body>
