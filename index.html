@@ -125,6 +125,8 @@
   .project-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; }
   .project-tags { display: flex; flex-wrap: wrap; gap: 7px; }
   .project-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 1px; padding: 3px 9px; border: 1px solid var(--border); color: var(--gold); background: rgba(255,201,64,0.06); text-transform: uppercase; }
+  .project-link { position: absolute; top: 18px; right: 18px; font-family: var(--mono); font-size: 10px; color: #60b8e0; text-decoration: none; letter-spacing: 1px; transition: color 0.2s; }
+  .project-link:hover { color: #a8d8f0; }
 
   #experience { background: var(--bg); transition: background 0.35s; }
   .timeline { position: relative; padding-left: 40px; }
@@ -149,11 +151,13 @@
   .edu-detail { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
   .edu-badge { display: inline-block; font-family: var(--mono); font-size: 10px; padding: 4px 12px; background: rgba(247,147,26,0.15); border: 1px solid var(--border-glow); color: var(--orange); margin-top: 12px; letter-spacing: 1px; }
 
+
+
   #certs { background: var(--bg); transition: background 0.35s; }
   .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-  .cert-card { background: var(--bg-card); border: 1px solid var(--border); padding: 20px 22px; display: flex; align-items: flex-start; gap: 16px; transition: border-color 0.3s, transform 0.3s, background 0.35s; }
+  .cert-card { background: var(--bg-card); border: 1px solid var(--border); padding: 20px 22px; display: flex; align-items: flex-start; gap: 16px; transition: border-color 0.3s, transform 0.3s, background 0.35s; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%); }
   .cert-card:hover { border-color: var(--border-glow); transform: translateY(-3px); }
-  .cert-icon { font-size: 22px; flex-shrink: 0; }
+  .cert-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
   .cert-name { font-family: var(--body); font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; line-height: 1.3; }
   .cert-issuer { font-family: var(--mono); font-size: 11px; color: var(--orange); letter-spacing: 1px; }
   .cert-year { font-family: var(--mono); font-size: 10px; color: var(--text-muted); margin-top: 4px; }
@@ -268,7 +272,7 @@
 <body>
 
 <nav>
-  <a href="#hero" class="nav-logo">LLX.DEV</a>
+  <a href="#hero" class="nav-logo">MY PORTFOLIO</a>
   <div class="nav-right">
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
@@ -322,7 +326,7 @@
       <div>
         <div class="about-bio">
           <p>I am a <strong>highly motivated and goal-oriented data professional</strong> with a strong passion for data science and engineering. I thrive on turning raw, complex data into actionable insights that drive real business decisions.</p>
-          <p>Currently at <strong>Under Armour</strong>, I engineer and manage data pipelines and infrastructure for the SAPAC region — building ADF ingestion frameworks that process over <strong>10TB of raw data monthly</strong> and Power BI dashboards that cut manual workload by <strong>70%</strong>.</p>
+          <p>Currently at <strong>Under Armour</strong>, I engineer and manage data pipelines and infrastructure for the SAPAC region — building ADF ingestion frameworks that process over <strong>1TB of raw data monthly</strong> and Power BI dashboards that cut manual workload by <strong>70%</strong>.</p>
           <p>I hold a <strong>Bachelor of Technology in Business Analytics (Honours, Distinction)</strong> from the National University of Singapore, and am actively seeking to leverage my analytical and engineering skills to improve corporate performance at scale.</p>
         </div>
         <div class="about-contact">
@@ -333,9 +337,9 @@
       </div>
       <div class="about-stats">
         <div class="stat-card"><div class="stat-num">2+</div><div class="stat-label">Years in Data Eng</div></div>
-        <div class="stat-card"><div class="stat-num">10TB+</div><div class="stat-label">Data / Month</div></div>
+        <div class="stat-card"><div class="stat-num">1TB+</div><div class="stat-label">Data / Month</div></div>
         <div class="stat-card"><div class="stat-num">70%</div><div class="stat-label">Manual Work Reduced</div></div>
-        <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">Certificates Earned</div></div>
+        <div class="stat-card"><div class="stat-num">8</div><div class="stat-label">Projects Built</div></div>
       </div>
     </div>
   </div>
@@ -428,42 +432,70 @@
     <div class="section-label">// 03 — PROJECTS</div>
     <h2 class="section-title">Featured Work</h2>
     <div class="projects-grid">
+
       <div class="project-card fade-in">
         <div class="project-num">PROJECT_01</div>
         <h3 class="project-title">Project Watchdog</h3>
         <p class="project-desc">A monitoring and automation system designed to track and flag anomalies across data pipelines. Integrates Python logic with SQL Server storage and Power Automate workflows for automated alerting.</p>
         <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">MS SQL Server</span><span class="project-tag">Power Automate</span></div>
       </div>
+
       <div class="project-card fade-in">
         <div class="project-num">PROJECT_02</div>
         <h3 class="project-title">Personal Finance Application</h3>
         <p class="project-desc">A full-stack personal finance tracker featuring expense categorisation, budgeting views, and dynamic charting — built using a modern JavaScript frontend stack.</p>
         <div class="project-tags"><span class="project-tag">VueJS</span><span class="project-tag">JavaScript</span><span class="project-tag">HTML</span></div>
+        <a href="https://github.com/chirpychu/personal_finance_application" target="_blank" class="project-link">↗ GITHUB</a>
       </div>
+
       <div class="project-card fade-in">
         <div class="project-num">PROJECT_03</div>
         <h3 class="project-title">Source Process Analyzer</h3>
         <p class="project-desc">A C++ performance analysis tool that queries and processes structured data from a SQL database to identify bottlenecks and inefficiencies in sourcing processes.</p>
         <div class="project-tags"><span class="project-tag">C++</span><span class="project-tag">SQL</span></div>
+        <a href="https://github.com/chirpychu/Source_Process_Analyzer" target="_blank" class="project-link">↗ GITHUB</a>
       </div>
+
       <div class="project-card fade-in">
         <div class="project-num">PROJECT_04</div>
         <h3 class="project-title">HDB Resale Price Prediction</h3>
         <p class="project-desc">Predictive analytics model using regression techniques in R to forecast Singapore HDB resale flat prices. Includes feature engineering, model evaluation, and Excel-based data preprocessing.</p>
         <div class="project-tags"><span class="project-tag">R</span><span class="project-tag">Excel</span><span class="project-tag">Predictive Analytics</span></div>
+        <a href="https://github.com/chirpychu/predictiveAnalytics" target="_blank" class="project-link">↗ GITHUB</a>
       </div>
+
       <div class="project-card fade-in">
         <div class="project-num">PROJECT_05</div>
         <h3 class="project-title">TikTok Web Mining &amp; Scraping</h3>
         <p class="project-desc">Web scraping and text mining pipeline targeting TikTok content data. Extracts, cleans, and analyses social media trends to uncover usage and engagement patterns using R.</p>
         <div class="project-tags"><span class="project-tag">R</span><span class="project-tag">Web Mining</span><span class="project-tag">Text Analytics</span></div>
+        <a href="https://github.com/chirpychu/web_mining" target="_blank" class="project-link">↗ GITHUB</a>
       </div>
+
       <div class="project-card fade-in">
         <div class="project-num">PROJECT_06</div>
         <h3 class="project-title">BlueSG Geospatial Analytics</h3>
         <p class="project-desc">Geospatial analysis of BlueSG electric car-sharing station data in Singapore. Maps station usage density, identifies coverage gaps, and visualises spatial distribution patterns.</p>
         <div class="project-tags"><span class="project-tag">R</span><span class="project-tag">Geospatial Analytics</span><span class="project-tag">Data Viz</span></div>
+        <a href="https://github.com/chirpychu/Geospatial_Proj" target="_blank" class="project-link">↗ GITHUB</a>
       </div>
+
+      <div class="project-card fade-in">
+        <div class="project-num">PROJECT_07</div>
+        <h3 class="project-title">Flood Prediction</h3>
+        <p class="project-desc">Kaggle competition project building a machine learning model to predict flood probability. Involves feature selection, data preprocessing, and model tuning using Python's data science stack.</p>
+        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Machine Learning</span><span class="project-tag">Kaggle</span></div>
+        <a href="https://www.kaggle.com/code/wolflxchuppy/flood-prediction" target="_blank" class="project-link">↗ KAGGLE</a>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-num">PROJECT_08</div>
+        <h3 class="project-title">Loan Payback Prediction</h3>
+        <p class="project-desc">Kaggle competition project applying classification algorithms to predict whether a borrower will repay a loan. Focuses on handling class imbalance, feature engineering, and model evaluation metrics.</p>
+        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Classification</span><span class="project-tag">Kaggle</span></div>
+        <a href="https://www.kaggle.com/code/wolflxchuppy/predict-loan-payback" target="_blank" class="project-link">↗ KAGGLE</a>
+      </div>
+
     </div>
   </div>
 </section>
@@ -481,7 +513,7 @@
         <ul class="timeline-desc">
           <li>Engineered and managed data pipelines and infrastructure for the SAPAC region.</li>
           <li>Developed and optimised ETL pipelines, improving data processing efficiency by <strong style="color:var(--gold)">30%</strong>.</li>
-          <li>Built a data ingestion framework using ADF and Logic Apps, processing over <strong style="color:var(--gold)">10TB</strong> of raw data monthly.</li>
+          <li>Built a data ingestion framework using ADF and Logic Apps, processing over <strong style="color:var(--gold)">1TB</strong> of raw data monthly.</li>
           <li>Designed and implemented database schemas that improved query performance by <strong style="color:var(--gold)">40%</strong>.</li>
           <li>Developed interactive Power BI dashboards with cross-functional teams, reducing manual workload by <strong style="color:var(--gold)">70%</strong>.</li>
           <li>Maintained data quality standards through daily validation, cutting data errors by <strong style="color:var(--gold)">25%</strong>.</li>
@@ -554,13 +586,72 @@
 <section id="certs">
   <div class="container">
     <div class="section-label">// 06 — CERTIFICATIONS</div>
-    <h2 class="section-title">Certificates</h2>
+    <h2 class="section-title">Certificates Earned</h2>
     <div class="certs-grid">
-      <div class="cert-card fade-in"><div class="cert-icon">🤖</div><div><div class="cert-name">Machine Learning in Production</div><div class="cert-issuer">DeepLearning.AI</div><div class="cert-year">2023</div></div></div>
-      <div class="cert-card fade-in"><div class="cert-icon">📊</div><div><div class="cert-name">Google Data Analytics Specialization</div><div class="cert-issuer">Coursera · Google</div><div class="cert-year">2023</div></div></div>
-      <div class="cert-card fade-in"><div class="cert-icon">🐍</div><div><div class="cert-name">Introduction to Python</div><div class="cert-issuer">DataCamp</div><div class="cert-year">2022</div></div></div>
-      <div class="cert-card fade-in"><div class="cert-icon">🎓</div><div><div class="cert-name">Business Analytics Foundations</div><div class="cert-issuer">National University of Singapore</div><div class="cert-year">2021</div></div></div>
-      <div class="cert-card fade-in"><div class="cert-icon">📈</div><div><div class="cert-name">Introduction to R</div><div class="cert-issuer">DataCamp</div><div class="cert-year">2020</div></div></div>
+
+      <div class="cert-card fade-in">
+        <div class="cert-icon">🐍</div>
+        <div>
+          <div class="cert-name">Introduction to Python</div>
+          <div class="cert-issuer">DataCamp</div>
+          <div class="cert-year">2022</div>
+        </div>
+      </div>
+
+      <div class="cert-card fade-in">
+        <div class="cert-icon">🎓</div>
+        <div>
+          <div class="cert-name">Business Analytics Foundations</div>
+          <div class="cert-issuer">National University of Singapore</div>
+          <div class="cert-year">2021</div>
+        </div>
+      </div>
+
+      <div class="cert-card fade-in">
+        <div class="cert-icon">📈</div>
+        <div>
+          <div class="cert-name">Introduction to R</div>
+          <div class="cert-issuer">DataCamp</div>
+          <div class="cert-year">2020</div>
+        </div>
+      </div>
+
+      <div class="cert-card fade-in">
+        <div class="cert-icon">📊</div>
+        <div>
+          <div class="cert-name">Google Data Analytics Specialization</div>
+          <div class="cert-issuer">Coursera · Google</div>
+          <div class="cert-year">2023</div>
+        </div>
+      </div>
+
+      <div class="cert-card fade-in">
+        <div class="cert-icon">🤖</div>
+        <div>
+          <div class="cert-name">Machine Learning in Production</div>
+          <div class="cert-issuer">DeepLearning.AI</div>
+          <div class="cert-year">2023</div>
+        </div>
+      </div>
+
+      <div class="cert-card fade-in">
+        <div class="cert-icon">☁️</div>
+        <div>
+          <div class="cert-name">AWS Technical Essentials</div>
+          <div class="cert-issuer">Amazon Web Services</div>
+          <div class="cert-year">2025</div>
+        </div>
+      </div>
+
+      <div class="cert-card fade-in">
+        <div class="cert-icon">❄️</div>
+        <div>
+          <div class="cert-name">Intro to Snowflake for Devs, Data Scientists &amp; Data Engineers</div>
+          <div class="cert-issuer">Snowflake</div>
+          <div class="cert-year">2025</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
